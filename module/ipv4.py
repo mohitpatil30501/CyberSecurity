@@ -1,3 +1,6 @@
+from module.typechanger import Type
+
+
 class IPv4:
     def __init__(self):
         self.ip = str(input("Format: 127.0.0.1\nEnter IP Address: "))
@@ -64,3 +67,16 @@ class IPv4:
             return False
         last_bits = 32 - self.mask
 
+        ip_binary_first = Type.Decimal_to_Binary(self.ip_part)
+        ip_binary_last = Type.Decimal_to_Binary(self.ip_part)
+        ip_binary_first.reverse()
+        ip_binary_last.reverse()
+
+        for i in range(0, last_bits):
+            ip_binary_first[i] = 0
+            ip_binary_last[i] = 1
+
+        ip_binary_first.reverse()
+        ip_binary_last.reverse()
+        print(Type.Binary_to_Decimal(ip_binary_first))
+        print(Type.Binary_to_Decimal(ip_binary_last))
