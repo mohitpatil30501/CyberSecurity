@@ -3,4 +3,4 @@ from module.typechanger import Type
 
 if __name__ == '__main__':
     user = IPv4()
-    print(user.Mask())
+    user.print_ipv4()

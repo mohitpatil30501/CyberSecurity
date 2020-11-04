@@ -21,17 +21,27 @@ class Type:
     @staticmethod
     def Binary_to_Decimal(binary):
         length = len(binary)
-        decimal = binary_lists = []
+        decimal = []
+        binary_lists = []
         binary.reverse()
         binary_lists.append(binary[: length // 4])
         binary_lists.append(binary[length // 4: length // 2])
         binary_lists.append(binary[length // 2: (length * 3) // 4])
         binary_lists.append(binary[(length * 3) // 4:])
         for binary_element in binary_lists:
-            print(len(binary_element))
-            i = decimal_element = 0
-            for bit in binary_element:
-                decimal_element += bit * (2 ** i)
-                i += 1
-            decimal.append(str(decimal_element))
+            if len(binary_element) == 8:
+                i = decimal_element = 0
+                for bit in binary_element:
+                    decimal_element += bit * (2 ** i)
+                    i += 1
+                decimal.append(str(decimal_element))
+        decimal.reverse()
+        return decimal
+
+    @staticmethod
+    def Binary_to_Decimal_int(binary):
+        decimal = i = 0
+        for bit in binary:
+            decimal += bit * (2 ** i)
+            i += 1
         return decimal
